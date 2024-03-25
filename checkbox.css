@@ -1,0 +1,101 @@
+/** @format */
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.icon-menu {
+    /*  */
+    --gap: 4px;
+    --height-bar: 2.5px;
+    --pos-y-bar-one: 0;
+    --pos-y-bar-three: 0;
+    --scale-bar: 1;
+    --rotate-bar-one: 0;
+    --rotate-bar-three: 0;
+    /*  */
+    position: absolute;
+    width: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+    cursor: pointer;
+    position: absolute;
+    /* background-color: red; */
+}
+
+.bar {
+    position: relative;
+    height: var(--height-bar);
+    width: 100%;
+    border-radius: 0.5rem;
+    background-color: #ffffff;
+}
+
+.bar--1 {
+    top: var(--pos-y-bar-one);
+    transform: rotate(var(--rotate-bar-one));
+    transition: top 200ms 100ms, transform 100ms;
+}
+
+.bar--2 {
+    transform: scaleX(var(--scale-bar));
+    transition: transform 150ms 100ms;
+}
+
+.bar--3 {
+    bottom: var(--pos-y-bar-three);
+    transform: rotate(var(--rotate-bar-three));
+    transition: bottom 200ms 100ms, transform 100ms;
+}
+
+.check-icon:checked + .icon-menu > .bar--1 {
+    transition: top 200ms, transform 200ms 100ms;
+}
+
+.check-icon:checked + .icon-menu > .bar--3 {
+    transition: bottom 200ms, transform 200ms 100ms;
+}
+
+.check-icon:checked + .icon-menu {
+    /*  */
+    --pos-y-bar-one: calc(var(--gap) + var(--height-bar));
+    --pos-y-bar-three: calc(var(--gap) + var(--height-bar));
+    --scale-bar: 0;
+    --rotate-bar-one: 45deg;
+    --rotate-bar-three: -45deg;
+    /*  */
+}
+
+.changer {
+    --left: 80%;
+    position: absolute;
+
+    width: 35px;
+    height: 35px;
+    background-color: #00000066;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: var(--left);
+    padding: 5px;
+    border-radius: 50%;
+    /* background-color: red; */
+}
+
+/*? changer_wrapper */
+.changer_wrapper {
+    --widthChanger_wrapper: 20%;
+    --heightChanger_wrapper: 10%;
+
+    width: var(--widthChanger_wrapper);
+    height: var(--heightChanger_wrapper);
+
+    display: flex;
+    align-items: center;
+    z-index: 100;
+
+    position: fixed;
+}
